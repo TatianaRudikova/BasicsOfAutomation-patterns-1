@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/7j7dp7he7f3sgebx/branch/master?svg=true)](https://ci.appveyor.com/project/TatianaRudikova/basicsofautomation-selenide/branch/master)
