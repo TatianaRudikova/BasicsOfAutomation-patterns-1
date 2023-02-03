@@ -178,7 +178,7 @@ class DeliveryTest {
         $("[data-test-id='date'] .input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] .input__control").setValue(firstMeetingDate);
         $("[name='name']").setValue(DataGenerator.generateName("ru"));
-        $("[name='phone']").setValue("81111111111");
+        $("[name='phone']").setValue("89012345678");
         $("[data-test-id=agreement]").click();
         $("[class='button__text']").click();
         $("[data-test-id='phone'].input_invalid .input__sub")
@@ -207,7 +207,21 @@ class DeliveryTest {
         $("[data-test-id='date'] .input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] .input__control").setValue(firstMeetingDate);
         $("[name='name']").setValue(DataGenerator.generateName("ru"));
-        $("[name='phone']").setValue("+79012345");
+        $("[name='phone']").setValue("+7901234567");
+        $("[data-test-id=agreement]").click();
+        $("[class='button__text']").click();
+        $("[data-test-id='phone'].input_invalid .input__sub")
+                .shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+    }
+
+    @Test
+    void shouldOperatorCodeInPhone() {
+        var firstMeetingDate = DataGenerator.generateDate(4, 5);
+        $("[data-test-id=city] input").setValue(DataGenerator.generateCity());
+        $("[data-test-id='date'] .input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
+        $("[data-test-id='date'] .input__control").setValue(firstMeetingDate);
+        $("[name='name']").setValue(DataGenerator.generateName("ru"));
+        $("[name='phone']").setValue("+70012345678");
         $("[data-test-id=agreement]").click();
         $("[class='button__text']").click();
         $("[data-test-id='phone'].input_invalid .input__sub")
