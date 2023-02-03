@@ -1,8 +1,6 @@
 package ru.netology.delivery.data;
 
 import com.github.javafaker.Faker;
-import lombok.Value;
-import lombok.val;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +14,7 @@ public class DataGenerator {
     }
 
     public static String generateDate(int shift, int range) {
-        return LocalDate.now().plusDays(3 + shift).plusDays(random.nextInt(range))
+        return LocalDate.now().plusDays(0 + shift).plusDays(random.nextInt(range))
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
@@ -26,9 +24,21 @@ public class DataGenerator {
         return city[random.nextInt(city.length)];
     }
 
+    public static String generateInvalidCity() {
+        String[] city = new String[]{"Ковров", "Южа", "Сосновый бор", "Камешково", "Зеленый Новгород", "Нарьян-Смак",
+                "Ростов-на-Горе", "Нижний Сад", "Владимировец", "Сухум"};
+        return city[random.nextInt(city.length)];
+    }
+
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale(locale));
         return faker.name().fullName();
+    }
+
+    public static String generateComplexName() {
+        String[] name = new String[]{"Арсений Новиков-Прибой", "Владимир Иванович Немирович-Данченко",
+                "Всеволод Александрович Овчина-Оболенский-Телепнев", "Николай Андреевич Римский-Корсаков", "Мартин Андерсен-Нексё"};
+        return name[random.nextInt(name.length)];
     }
 
     public static String generatePhone(String locale) {
@@ -36,21 +46,4 @@ public class DataGenerator {
         return faker.phoneNumber().phoneNumber();
     }
 
-//    public static class Registration {
-//        private Registration() {
-//        }
-
-//        public static UserInfo generateUser(String locale) {
-//            Faker faker = new Faker(new Locale(locale));
-//            return new UserInfo(generateCity(), generateName(locale), generatePhone(locale));
-//        }
-
-//    }
-//
-//    @Value
-//    public static class UserInfo {
-//        String city;
-//        String name;
-//        String phone;
-//    }
 }
